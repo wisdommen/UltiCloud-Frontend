@@ -3,7 +3,7 @@ import store from "@/store";
 const url = 'https://panel.ultikits.com:4433/server/addserver'
 
 function add(that, name, ip, domain) {
-    if (!(name && ip)) {
+    if (!(name && domain)) {
         that.$snackbar.Launch('请将信息填写完整')
         return
     }

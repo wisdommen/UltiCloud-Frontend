@@ -14,10 +14,14 @@
     <v-card>
       <v-card-text>
         <v-tabs fixed-tabs>
-          <v-tab :disabled="LoginForm.loading"><v-icon left>mdi-login</v-icon>
-            {{ $i18n.t('Login') }}</v-tab>
-          <v-tab :disabled="LoginForm.loading"><v-icon left>mdi-account-multiple-plus</v-icon>
-            {{ $i18n.t('Register') }}</v-tab>
+          <v-tab :disabled="LoginForm.loading">
+            <v-icon left>mdi-login</v-icon>
+            {{ $i18n.t('Login') }}
+          </v-tab>
+          <v-tab :disabled="LoginForm.loading">
+            <v-icon left>mdi-account-multiple-plus</v-icon>
+            {{ $i18n.t('Register') }}
+          </v-tab>
 
           <v-tab-item>
             <v-card flat>
@@ -25,14 +29,21 @@
                 <v-alert border="left" colored-border type="info" elevation="6">
                   如果您曾经购买了Pro,那么请新注册一个账号,用户名为您当初购买时注册的用户名,也就是配置文件中的用户名
                 </v-alert>
-                <v-text-field :label="$i18n.t('Username')" filled v-model="LoginForm.username" :disabled="LoginForm.loading"></v-text-field>
-                <v-text-field :label="$i18n.t('Password')" filled type="password" v-model="LoginForm.password" :disabled="LoginForm.loading"></v-text-field>
+                <v-text-field :label="$i18n.t('Username')" filled v-model="LoginForm.username"
+                              :disabled="LoginForm.loading"></v-text-field>
+                <v-text-field :label="$i18n.t('Password')" filled type="password" v-model="LoginForm.password"
+                              :disabled="LoginForm.loading"></v-text-field>
               </v-card-text>
               <v-card-actions>
-                <v-btn large color="blue darken-1" text @click="LoginForm.dialog = false"><v-icon left>mdi-close</v-icon>
-                  {{ $i18n.t('Close') }}</v-btn>
-                <v-btn large color="blue darken-1" text @click="LoginForm.loading = true" :loading="LoginForm.loading" :disabled="LoginForm.loading"><v-icon left>mdi-check</v-icon>
-                  {{ $i18n.t('Login') }}</v-btn>
+                <v-btn large color="blue darken-1" text @click="LoginForm.dialog = false">
+                  <v-icon left>mdi-close</v-icon>
+                  {{ $i18n.t('Close') }}
+                </v-btn>
+                <v-btn large color="blue darken-1" text @click="LoginForm.loading = true" :loading="LoginForm.loading"
+                       :disabled="LoginForm.loading">
+                  <v-icon left>mdi-check</v-icon>
+                  {{ $i18n.t('Login') }}
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-tab-item>
@@ -42,16 +53,20 @@
                 <v-container fluid>
                   <v-row>
                     <v-col cols="12" sm="6">
-                      <v-text-field v-model="form.username" :rules="rules.name" color="purple darken-2" label="用户名" required :disabled="RegLoading"></v-text-field>
+                      <v-text-field v-model="form.username" :rules="rules.name" color="purple darken-2" label="用户名"
+                                    required :disabled="RegLoading"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6">
-                      <v-text-field v-model="form.email" :rules="rules.name" color="blue darken-2" label="电子邮箱" required :disabled="RegLoading"></v-text-field>
+                      <v-text-field v-model="form.email" :rules="rules.name" color="blue darken-2" label="电子邮箱" required
+                                    :disabled="RegLoading"></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-text-field v-model="form.pwd1" :rules="rules.name" color="teal" label="密码" type="password" required :disabled="RegLoading"></v-text-field>
+                      <v-text-field v-model="form.pwd1" :rules="rules.name" color="teal" label="密码" type="password"
+                                    required :disabled="RegLoading"></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-text-field v-model="form.pwd2" :rules="rules.pwd2" color="teal" label="重复密码" type="password" required :disabled="RegLoading"></v-text-field>
+                      <v-text-field v-model="form.pwd2" :rules="rules.pwd2" color="teal" label="重复密码" type="password"
+                                    required :disabled="RegLoading"></v-text-field>
                     </v-col>
                     <v-col cols="12" v-if="false">
                       <v-checkbox v-model="form.terms" color="green">
@@ -67,10 +82,15 @@
                   </v-row>
                 </v-container>
                 <v-card-actions>
-                  <v-btn large color="blue darken-1" text @click="LoginForm.dialog = false"><v-icon left>mdi-close</v-icon>
-                    {{ $i18n.t('Close') }}</v-btn>
-                  <v-btn large color="blue darken-1" text @click="submit" :loading="RegLoading" :disabled="!formIsValid"><v-icon left>mdi-check</v-icon>
-                    {{ $i18n.t('Register') }}</v-btn>
+                  <v-btn large color="blue darken-1" text @click="LoginForm.dialog = false">
+                    <v-icon left>mdi-close</v-icon>
+                    {{ $i18n.t('Close') }}
+                  </v-btn>
+                  <v-btn large color="blue darken-1" text @click="submit" :loading="RegLoading"
+                         :disabled="!formIsValid">
+                    <v-icon left>mdi-check</v-icon>
+                    {{ $i18n.t('Register') }}
+                  </v-btn>
                 </v-card-actions>
               </v-form>
               <v-dialog v-model="terms" width="70%">
@@ -151,12 +171,12 @@ export default {
     }
   },
   methods: {
-    submit () {
+    submit() {
       this.$Register.reg(this, this.form.username, this.form.pwd1, this.form.email)
     },
   },
   computed: {
-    formIsValid () {
+    formIsValid() {
       return (
           this.form.pwd2 &&
           this.form.pwd1 &&
